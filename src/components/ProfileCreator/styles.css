@@ -1,0 +1,75 @@
+.profile-creator {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.profile-creator form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-wrapper label {
+  font-weight: 700;
+}
+
+.profile-image-wrapper {
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 14px solid #FFACE4;
+}
+
+.profile-image-wrapper img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.randomize-button {
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  animation-name: colorJump;
+  animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  border: none;
+  border-radius: 8px;
+}
+
+@keyframes colorJump {
+  0% {
+    background-color: #AB87FF;
+  }
+  20% {
+    background-color: #B4E1FF;
+  }
+  40% {
+    background-color: #FFACE4;
+  }
+  60% {
+    background-color: #C1FF9B;
+  }
+  80% {
+    background-color: #F5FFC6;
+  }
+  100% {
+    background-color: #AB87FF;
+  }
+}
