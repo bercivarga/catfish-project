@@ -1,0 +1,47 @@
+.navbar {
+  padding: 24px 48px;
+  background-color: #AB87FF;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-main-link {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #F5FFC6;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.nav-link {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .2s, box-shadow .2s;
+}
+
+.nav-link:hover {
+  color: #C1FF9B;
+  box-shadow: 0 4px #C1FF9B;
+}
+
+
+/*
+
+All colors:
+
+lavender floral: #AB87FF
+uranian blue: #B4E1FF
+cream: #F5FFC6
+orchid crayola: #FFACE4
+mint green: #C1FF9B
+
+*/
