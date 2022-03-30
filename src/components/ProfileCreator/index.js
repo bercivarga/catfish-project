@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAppContext from '../../context';
 import './styles.css';
@@ -14,8 +14,25 @@ export default function ProfileCreator() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const user = localStorage.getItem("catuserdata");
+    
+    if (!user) {
+      return
+    }
+
+    const toObj = JSON.parse(user);
+    setUserState(toObj);
+    navigate('/explore');
+  }, [navigate, setUserState])
+
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (!checkFormValidity()) {
+      console.error('Form is not filled out correctly')
+      return
+    }
 
     const user = {
       name,
@@ -26,7 +43,12 @@ export default function ProfileCreator() {
     }
 
     setUserState(user);
+    localStorage.setItem("catuserdata", JSON.stringify(user));
     navigate('/explore');
+  }
+
+  function checkFormValidity() {
+    return name && description && hobbies && age && picture
   }
 
   async function getRandomCat() {
@@ -45,19 +67,19 @@ export default function ProfileCreator() {
         <h2>Welcome to PURRMANCE!</h2>
         <div className='field-wrapper'>
           <label>Your name</label>
-          <input type={'text'} value={name} onChange={(e) => setName(e.target.value)} />
+          <input type={'text'} required value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Describe yourself</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea value={description} required onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Your hobbies</label>
-          <input type={'text'} value={hobbies} onChange={(e) => setHobbies(e.target.value)} />
+          <input type={'text'} value={hobbies} required onChange={(e) => setHobbies(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>When were you born?</label>
-          <input type={'date'} value={age} onChange={(e) => setAge(e.target.value)} />
+          <input type={'date'} value={age} required onChange={(e) => setAge(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Choose your profile picture!</label>
