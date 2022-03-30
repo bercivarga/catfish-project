@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import useAppContext from '../../context'
-import './styles.css'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAppContext from '../../context';
+import './styles.css';
 
 export default function ProfileCreator() {
   const [name, setName] = useState()
@@ -10,6 +11,8 @@ export default function ProfileCreator() {
   const [picture, setPicture] = useState()
 
   const { setUserState } = useAppContext();
+
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -23,6 +26,7 @@ export default function ProfileCreator() {
     }
 
     setUserState(user);
+    navigate('/explore');
   }
 
   async function getRandomCat() {
