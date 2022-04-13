@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const [userState, setUserState] = useState();
-  const [matches, setMatches] = useState();
+  const [matches, setMatches] = useState([]);
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
