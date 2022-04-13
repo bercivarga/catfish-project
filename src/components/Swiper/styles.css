@@ -1,0 +1,45 @@
+.swiper-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+}
+
+.candidate-container {
+	background: white;
+	padding: 24px;
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	align-items: center;
+	justify-content: center;
+}
+
+.left-swipe {
+	border: none;
+	background: lightgray;
+	padding: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 48px;
+	border-radius: 8px;
+}
+
+.swiper-image-wrapper {
+	height: 300px;
+	width: auto;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 16px;
+	border: 14px solid #FFACE4;
+}
+
+.swiper-image-wrapper img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}

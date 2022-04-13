@@ -1,15 +1,28 @@
-import { Link } from 'react-router-dom'
-import './styles.css'
+import { Link } from 'react-router-dom';
+import useAppContext from '../../context';
+import './styles.css';
 
 export default function Navbar() {
+  const { userState, setUserState  } = useAppContext();
+  
   return (
     <nav className='navbar'>
-      <Link to="/explore" className={'nav-main-link'}>PURRM😻NCE</Link>
-      <div className='links'>
+      <Link to={userState ? "explore" : "signup"} className={'nav-main-link'}>PURRM😻NCE</Link>
+      { userState && <div className='links'>
         <Link to="explore" className={'nav-link'}>Explore</Link>
         <Link to="matches" className={'nav-link'}>Matches</Link>
         <Link to="profile/me" className={'nav-link'}>Profile</Link>
-      </div>
+        <Link
+          to="signup"
+          className={'nav-link'}
+          onClick={() => {
+            setUserState(undefined);
+            localStorage.removeItem('catuserdata');
+          }}
+        >
+          Sign out
+        </Link>
+      </div>}
     </nav>
   )
 }

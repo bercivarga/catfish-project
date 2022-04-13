@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from './App';
 import ProfileCreator from './components/ProfileCreator';
+import Swiper from './components/Swiper';
 import './index.css';
 
 ReactDOM.render(
@@ -16,9 +17,9 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/signup" element={<ProfileCreator />} />
-        <Route path="/explore" element={<h1>explore</h1>} />
+        <Route path="/explore" element={<Swiper />} />
         <Route path="profile" element={<Outlet />}>
-          <Route path="me" element={<h1>my profile</h1>} />
+          <Route path="me" element={<h1>my profile --> homework!</h1>} />
           <Route path=":matchId" element={<h1>match profile</h1>} />
         </Route>
         <Route path="matches" element={<h1>matches</h1>} />
