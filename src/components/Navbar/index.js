@@ -7,7 +7,7 @@ export default function Navbar() {
   
   return (
     <nav className='navbar'>
-      <Link to={userState ? "explore" : "signup"} className={'nav-main-link'}>PURRM😻NCE</Link>
+      <Link to={userState ? "explore" : "signup"} className={'nav-main-link'}>CATFISH</Link>
       { userState && <div className='links'>
         <Link to="explore" className={'nav-link'}>Explore</Link>
         <Link to="matches" className={'nav-link'}>Matches</Link>

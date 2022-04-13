@@ -1,13 +1,16 @@
 import {useState} from 'react';
 import users from '../../db/users';
+import useLoggedIn from '../../hooks/useLoggedIn.js'
 import './styles.css';
 
 export default function Swiper() {
 	const [currentCandidateIndex, setCurrentCandidateIndex] = useState(0);
 	
+	useLoggedIn();
+	
 	return (
 		<div className="swiper-container">
-			<p>There are {users.length} singles in your area!</p>
+			<marquee>There are {users.length - currentCandidateIndex} singles in your area!</marquee>
 			<CurrentCandidate
 				candidate={users[currentCandidateIndex]}
 				onSwipe={() => setCurrentCandidateIndex(currentCandidateIndex + 1)}
@@ -31,7 +34,7 @@ function CurrentCandidate(props) {
 		<div className="candidate-container">
 			<button
 				type="button"
-				className="left-swipe" 
+				className="swipe-btn left-swipe" 
 				onClick={onSwipe}
 			>🤮</button>
 			<div className="candidate-info-container">
@@ -45,7 +48,7 @@ function CurrentCandidate(props) {
 			</div>
 			<button
 				type="button"
-				className="right-swipe"
+				className="swipe-btn right-swipe"
 				 onClick={onSwipe}
 			 >😍</button>
 		</div>

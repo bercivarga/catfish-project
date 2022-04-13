@@ -11,12 +11,11 @@ function App() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  // This is not a good idea in general, as it routes one very page load 
   useEffect(() => {
     if (pathname === "/") {
       navigate('/signup')
     }
-  }, [])
+  }, [navigate, pathname])
 
   return (
     <AppContext.Provider value={{

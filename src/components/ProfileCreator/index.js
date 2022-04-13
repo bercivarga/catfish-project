@@ -4,11 +4,11 @@ import useAppContext from '../../context';
 import './styles.css';
 
 export default function ProfileCreator() {
-  const [name, setName] = useState()
-  const [description, setDescription] = useState()
-  const [hobbies, setHobbies] = useState()
-  const [age, setAge] = useState()
-  const [picture, setPicture] = useState()
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [hobbies, setHobbies] = useState('')
+  const [age, setAge] = useState('')
+  const [picture, setPicture] = useState('')
 
   const { setUserState } = useAppContext();
 
@@ -39,7 +39,8 @@ export default function ProfileCreator() {
       description,
       hobbies,
       age,
-      picture
+      picture,
+      matches: []
     }
 
     setUserState(user);

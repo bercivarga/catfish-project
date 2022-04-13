@@ -6,8 +6,15 @@
 	padding: 40px;
 }
 
+.swiper-container marquee {
+	max-width: 300px;
+	margin-bottom: 24px;
+}
+
 .candidate-container {
 	background: white;
+	border-radius: 8px;
+	box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.1);
 	padding: 24px;
 	display: flex;
 	flex-direction: row;
@@ -16,15 +23,26 @@
 	justify-content: center;
 }
 
-.left-swipe {
+.swipe-btn {
 	border: none;
 	background: lightgray;
 	padding: 24px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 48px;
+	font-size: 32px;
+	font-stretch: expanded;
 	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color .2s;
+}
+
+.left-swipe:hover {
+	background: darkred;
+}
+
+.right-swipe:hover {
+	background: seagreen;
 }
 
 .swiper-image-wrapper {
