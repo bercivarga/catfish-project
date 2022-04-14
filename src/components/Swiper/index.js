@@ -22,7 +22,8 @@ export default function Swiper() {
 		} else {
 			setGotAMatch(false);
 		}
-		
+		console.log(currentCandidateIndex)
+
 		setCurrentCandidateIndex(currentCandidateIndex + 1);
 	}
 	

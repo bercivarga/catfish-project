@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAppContext from '../../context';
 import './styles.css';
 
 export default function ProfileCreator() {
@@ -8,7 +10,23 @@ export default function ProfileCreator() {
   const [age, setAge] = useState('');
   const [picture, setPicture] = useState('');
 
-  // TODO: Make sure that users are referred to the /explore page if there's already an account logged in
+  const navigate = useNavigate();
+
+  const {
+    setUserState
+  } = useAppContext();
+
+  useEffect(() => {
+    const data = localStorage.getItem("catuserdata");
+
+    if (!data) {
+      return
+    }
+
+    const userData = JSON.parse(data);
+    setUserState(userData);
+    navigate('/explore');
+  }, [])
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -17,6 +35,19 @@ export default function ProfileCreator() {
       console.error('Form is not filled out correctly')
       return
     }
+
+    const user = {
+      name,
+      description,
+      hobbies,
+      age,
+      picture,
+      matches: []
+    }
+
+    setUserState(user);
+    localStorage.setItem("catuserdata", JSON.stringify(user));
+    navigate('/explore');
   }
 
   function checkFormValidity() {
@@ -39,23 +70,23 @@ export default function ProfileCreator() {
         <h2>Welcome to PURRMANCE!</h2>
         <div className='field-wrapper'>
           <label>Your name</label>
-          <input type={'text'} required value={''} onChange={(e) => console.log(e)} />
+          <input type={'text'} required={true} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Describe yourself</label>
-          <textarea value={''} required onChange={(e) => console.log(e)} />
+          <textarea value={description} required onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Your hobbies</label>
-          <input type={'text'} value={''} required onChange={(e) => console.log(e)} />
+          <input type={'text'} value={hobbies} required onChange={(e) => setHobbies(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>When were you born?</label>
-          <input type={'date'} value={''} required onChange={(e) => console.log(e)} />
+          <input type={'date'} value={age} required onChange={(e) => setAge(e.target.value)} />
         </div>
         <div className='field-wrapper'>
           <label>Choose your profile picture!</label>
-          <button type='button' className='randomize-button' onClick={() => console.log('a cat?')}>Randomize</button>
+          <button type='button' className='randomize-button' onClick={getRandomCat}>Randomize</button>
         </div>
         <button type='submit' className='submit-button'>Submit</button>
       </form>

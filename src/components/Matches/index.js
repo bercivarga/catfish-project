@@ -5,7 +5,7 @@ import './styles.css';
 export default function Matches() {
 	const { matches } = useAppContext();
 	
-	if (matches.length === 0) {
+	if (!matches || matches.length === 0) {
 		return (
 			<img
 				className="no-matches"

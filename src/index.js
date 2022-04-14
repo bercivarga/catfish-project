@@ -8,7 +8,9 @@ import {
 } from "react-router-dom";
 import App from './App';
 import ProfileCreator from './components/ProfileCreator';
+import Swiper from './components/Swiper';
 import Matches from './components/Matches';
+import MatchProfile from './components/Matches/MatchProfile';
 import './index.css';
 
 ReactDOM.render(
@@ -17,13 +19,19 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/signup" element={<ProfileCreator />} />
-          { /* TODO: Add path to /explore */}
-          <Route path="/profile" element={<Outlet />}>
+          <Route path="/explore" element={<Swiper />} />
+          <Route path="/profile" element={(
+            <>
+              <h1>sample menu</h1>
+              <Outlet />
+            </>
+          )}>
             <Route path="me" element={<h1>my profile --`&gt;` homework!</h1>} />
-            { /* TODO: add match profile path (:matchId) */}
+            <Route path="something" element={<h2>something</h2>} />
+            <Route path=":matchId" element={<MatchProfile />} />
           </Route>
-          <Route path="matches" element={<Matches />} />
-          { /* TODO: Add a fallback route */}
+          <Route path="/matches" element={<Matches />} />
+          <Route path="*" element={<h2>404, sad life :(</h2>} />
         </Route>
       </Routes>
     </BrowserRouter>

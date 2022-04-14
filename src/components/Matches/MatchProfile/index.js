@@ -3,7 +3,7 @@ import useGetUser from '../../../hooks/useGetUser';
 
 export default function MatchProfile() {
 	const { matchId } = useParams();
-	
+
 	const match = useGetUser(matchId); 
 	
 	if (!match) {
